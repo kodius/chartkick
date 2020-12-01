@@ -7716,6 +7716,7 @@ function injectCSS(rootNode, css) {
 		css = '/* Chart.js */\n' + css;
 		var style = document.createElement('style');
 		style.setAttribute('type', 'text/css');
+		style.setAttribute('nonce', gon.style_nonce)
 		style.appendChild(document.createTextNode(css));
 		rootNode.appendChild(style);
 	}

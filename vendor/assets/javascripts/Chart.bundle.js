@@ -7711,12 +7711,11 @@ function removeResizeListener(node) {
 function injectCSS(rootNode, css) {
 	// https://stackoverflow.com/q/3922139
 	var expando = rootNode[EXPANDO_KEY] || (rootNode[EXPANDO_KEY] = {});
-	if (!expando.containsStyles) {
+	if (!expando.containsStyles && (window.location.href.indexOf('/admin/dashboard') || window.location.href.indexOf('/admin/spectrum_search_logs'))) {
 		expando.containsStyles = true;
 		css = '/* Chart.js */\n' + css;
 		var style = document.createElement('style');
 		style.setAttribute('type', 'text/css');
-		style.setAttribute('nonce', gon.style_nonce)
 		style.appendChild(document.createTextNode(css));
 		rootNode.appendChild(style);
 	}
